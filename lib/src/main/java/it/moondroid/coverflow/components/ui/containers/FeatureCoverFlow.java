@@ -1082,9 +1082,8 @@ public class FeatureCoverFlow extends EndlessLoopAdapterContainer implements Vie
                 
                 for(int i = count-1; i >= 0; i--) {
                     final View child = getChildAt(childOrder[i]);
-                    if (child.getVisibility() == VISIBLE
-                            || child.getAnimation() != null) {
-                    	
+					if (child!=null && (child.getVisibility() == VISIBLE
+							|| child.getAnimation() != null)) {
                     	getScrolledTransformedChildRectangle(child, frame);
                     	
                         if (frame.contains(xf, yf)) {

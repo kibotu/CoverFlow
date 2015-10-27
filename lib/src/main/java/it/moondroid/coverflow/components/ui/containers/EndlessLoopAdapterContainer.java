@@ -118,6 +118,7 @@ public class EndlessLoopAdapterContainer extends AdapterView<Adapter> {
 		super(context, attrs, defStyle);
 		
 		final ViewConfiguration configuration = ViewConfiguration.get(context);
+
         mTouchSlop = configuration.getScaledTouchSlop();
         mMinimumVelocity = configuration.getScaledMinimumFlingVelocity();
         mMaximumVelocity = configuration.getScaledMaximumFlingVelocity();
@@ -1064,7 +1065,7 @@ public class EndlessLoopAdapterContainer extends AdapterView<Adapter> {
         	
             if (mTouchState == TOUCH_STATE_SCROLLING) {
                 // Scroll to follow the motion event
-                final int deltaX = (int) (mLastMotionX - x);
+                final int deltaX = (int) (mLastMotionX - x)/3;
                 mLastMotionX = x;
                 mLastMotionY = y;
                 
@@ -1111,12 +1112,12 @@ public class EndlessLoopAdapterContainer extends AdapterView<Adapter> {
         	//if we had normal down click and we haven't moved enough to initiate drag, take action as a click on down coordinates
         	if (mTouchState == TOUCH_STATE_SCROLLING) {
 	            
-	            mVelocityTracker.computeCurrentVelocity(1000, mMaximumVelocity);
+	            mVelocityTracker.computeCurrentVelocity(1000, 1000);
 	            int initialXVelocity = (int) mVelocityTracker.getXVelocity();
 	            int initialYVelocity = (int) mVelocityTracker.getYVelocity();
-	            
+
 	            if (Math.abs(initialXVelocity) + Math.abs(initialYVelocity) > mMinimumVelocity) {
-	            	fling(-initialXVelocity, -initialYVelocity);
+					fling(-initialXVelocity, -initialYVelocity);
 	            }
 	            else{
 	            	// Release the drag
