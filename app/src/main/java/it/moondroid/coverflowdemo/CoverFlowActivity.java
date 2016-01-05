@@ -58,6 +58,7 @@ public class CoverFlowActivity extends ActionBarActivity {
         mCoverFlow.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                position = position % mData.size();
                 Toast.makeText(CoverFlowActivity.this,
                         getResources().getString(mData.get(position).titleResId),
                         Toast.LENGTH_SHORT).show();
