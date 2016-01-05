@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
         coverflow:adjustPositionThreshold="0.5"
-        coverflow:circlePathRadius="0"
+        coverflow:circlePathRadius="1"
         coverflow:coverHeight="@dimen/cover_height_circular"
         coverflow:coverWidth="@dimen/cover_width_circular"
         coverflow:maxScaleFactor="1.5"
