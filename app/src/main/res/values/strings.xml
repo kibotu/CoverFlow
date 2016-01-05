@@ -3,6 +3,8 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="action_normal">Normal</string>
+    <string name="action_circular">Circular</string>
 
     <string name="title1">God of War Ascension</string>
     <string name="title2">Assassin\'s Creed III</string>

@@ -20,17 +20,17 @@ import java.util.ArrayList;
 import it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow;
 
 
-public class CoverFlowActivity extends ActionBarActivity {
+public class CoverFlowCircularActivity extends ActionBarActivity {
 
     private FeatureCoverFlow mCoverFlow;
-    private CoverFlowAdapter mAdapter;
+    private CoverFlowCircularAdapter mAdapter;
     private ArrayList<GameEntity> mData = new ArrayList<>(0);
     private TextSwitcher mTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_coverflow);
+        setContentView(R.layout.activity_circular_coverflow);
 
         mData.add(new GameEntity(R.drawable.image_1, R.string.title1));
         mData.add(new GameEntity(R.drawable.image_2, R.string.title2));
@@ -41,7 +41,7 @@ public class CoverFlowActivity extends ActionBarActivity {
         mTitle.setFactory(new ViewSwitcher.ViewFactory() {
             @Override
             public View makeView() {
-                LayoutInflater inflater = LayoutInflater.from(CoverFlowActivity.this);
+                LayoutInflater inflater = LayoutInflater.from(CoverFlowCircularActivity.this);
                 TextView textView = (TextView) inflater.inflate(R.layout.item_title, null);
                 return textView;
             }
@@ -51,7 +51,7 @@ public class CoverFlowActivity extends ActionBarActivity {
         mTitle.setInAnimation(in);
         mTitle.setOutAnimation(out);
 
-        mAdapter = new CoverFlowAdapter(this);
+        mAdapter = new CoverFlowCircularAdapter(this);
         mAdapter.setData(mData);
         mCoverFlow = (FeatureCoverFlow) findViewById(R.id.coverflow);
         mCoverFlow.setAdapter(mAdapter);
@@ -59,8 +59,8 @@ public class CoverFlowActivity extends ActionBarActivity {
         mCoverFlow.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                position = position % mData.size();
-                Toast.makeText(CoverFlowActivity.this,
+//                position = position % mData.size();
+                Toast.makeText(CoverFlowCircularActivity.this,
                         getResources().getString(mData.get(position).titleResId),
                         Toast.LENGTH_SHORT).show();
             }
@@ -69,6 +69,7 @@ public class CoverFlowActivity extends ActionBarActivity {
         mCoverFlow.setOnScrollPositionListener(new FeatureCoverFlow.OnScrollPositionListener() {
             @Override
             public void onScrolledToPosition(int position) {
+//                position = position % mData.size();
                 mTitle.setText(getResources().getString(mData.get(position).titleResId));
             }
 
@@ -77,7 +78,6 @@ public class CoverFlowActivity extends ActionBarActivity {
                 mTitle.setText("");
             }
         });
-
     }
 
 
@@ -95,12 +95,12 @@ public class CoverFlowActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
 
         switch (item.getItemId()) {
-            case R.id.action_circular:
-                Intent intent = new Intent(this, CoverFlowCircularActivity.class);
+            case R.id.action_normal:
+                Intent intent = new Intent(this, CoverFlowActivity.class);
                 startActivity(intent);
                 finish();
                 break;
-            case R.id.action_normal:
+            case R.id.action_circular:
             case R.id.action_settings:
                 return true;
         }
