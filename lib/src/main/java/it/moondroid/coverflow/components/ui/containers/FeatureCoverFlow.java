@@ -977,7 +977,7 @@ public class FeatureCoverFlow extends EndlessLoopAdapterContainer implements Vie
 				
 				
 				int position = mFirstItemPosition + childOrder[i];
-				if(position >= mAdapter.getCount()) position = position - mAdapter.getCount();		
+				if(position >= mAdapter.getCount()) position = position % mAdapter.getCount();
 						
 						
 				mSelectedPosition = position;				
