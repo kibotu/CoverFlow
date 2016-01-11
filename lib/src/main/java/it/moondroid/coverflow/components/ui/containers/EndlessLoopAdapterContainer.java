@@ -1112,7 +1112,7 @@ public class EndlessLoopAdapterContainer extends AdapterView<Adapter> {
         	//if we had normal down click and we haven't moved enough to initiate drag, take action as a click on down coordinates
         	if (mTouchState == TOUCH_STATE_SCROLLING) {
 	            
-	            mVelocityTracker.computeCurrentVelocity(500, 500);
+	            mVelocityTracker.computeCurrentVelocity(1000, 1000);
 	            int initialXVelocity = (int) mVelocityTracker.getXVelocity();
 	            int initialYVelocity = (int) mVelocityTracker.getYVelocity();
 
